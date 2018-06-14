@@ -8,19 +8,10 @@ require('colors')
 var defaultConfig = require('./config')
 
 function checkMissing (pack, config) {
-  var warnItems
-  var required
-  if (pack.private) {
-    warnItems = config.warnOnPrivate
-    required = config.requiredOnPrivate
-  } else {
-    warnItems = config.warn
-    required = config.required
-  }
-  required.forEach(function (key) {
+  config.required.forEach(function (key) {
     if (!pack[key]) throw new Error(config.fileName + ' files must have a ' + key)
   })
-  warnItems.forEach(function (key) {
+  config.warn.forEach(function (key) {
     if (!pack[key] && !config.quiet) console.log(('missing ' + key).yellow)
   })
 }
@@ -74,21 +65,20 @@ module.exports = function (file, config) {
 
   // sort some sub items alphabetically
   config.sortedSubItems.forEach(function (key) {
+    if (!out[key]) {
+      return;
+    }
+    if (out[key]["lib"]) {
+      out[key]["lib"].sort()
+    }
     if (out[key]) out[key] = sortAlphabetically(out[key])
   })
 
-  // wipe version numbers
-  if (config.wipe) {
-    var versionedKeys = ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']
-    versionedKeys.forEach(function (key) {
-      const depGroup = out[key]
-      if (depGroup) {
-        for (var item in depGroup) {
-          depGroup[item] = '*'
-        }
-      }
-    })
-  }
+  let compilerOptions = {}
+  config.compilerOptionsSortToTop.forEach(function (key) {
+    if (out.compilerOptions[key]) compilerOptions[key] = out.compilerOptions[key]
+  })
+  out.compilerOptions = compilerOptions
 
   // write it out
   outputString = JSON.stringify(out, null, 2) + '\n'

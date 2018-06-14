@@ -1,43 +1,30 @@
 {
   "files": [
-    "package.json"
+    "tsconfig.json"
   ],
   "quiet": false,
   "required": [
-    "name",
-    "version"
   ],
-  "requiredOnPrivate": [],
   "sortToTop": [
-    "name",
-    "description",
-    "version",
-    "author"
+    "compilerOptions",
+    "extends",
+    "files",
+    "include",
+    "exclude",
+    "compileOnSave"
   ],
   "sortedSubItems": [
-    "dependencies",
-    "devDependencies",
-    "peerDependencies",
-    "optionalDependencies",
-    "jshintConfig",
-    "scripts",
-    "keywords"
+    "compilerOptions"
+  ],
+  "compilerOptionsSortToTop": [
+    "target",
+    "module",
+    "declaration",
+    "lib",
+    "rootDir",
+    "outDir",
+    "outFile"
   ],
   "warn": [
-    "description",
-    "author",
-    "repository",
-    "keywords",
-    "main",
-    "bugs",
-    "homepage",
-    "license"
-  ],
-  "warnOnPrivate": [
-    "name",
-    "version",
-    "description",
-    "main"
-  ],
-  "wipe": false
+  ]
 }

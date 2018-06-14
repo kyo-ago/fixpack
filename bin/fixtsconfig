@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-var fixpack = require('../fixpack')
+var fixtsconfig = require('../fixtsconfig')
 var path = require('path')
 var defaultConfig = require('../config')
-var config = require('rc')('fixpack', defaultConfig)
+var config = require('rc')('fixtsconfig', defaultConfig)
 var files = config._
 
 if (files.length) {
@@ -10,5 +10,5 @@ if (files.length) {
 }
 
 config.files.forEach(function (file) {
-  fixpack(path.resolve(file), config)
+  fixtsconfig(path.resolve(file), config)
 })

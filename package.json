@@ -1,11 +1,11 @@
 {
-  "name": "fixpack",
-  "description": "cli tool that cleans up package.json files.",
-  "version": "2.3.0",
+  "name": "fixtsconfig",
+  "description": "cli tool that cleans up tsconfig.json files.",
+  "version": "1.0.0",
   "author": "Henrik Joreteg <henrik@andyet.net>",
-  "bin": "./bin/fixpack",
+  "bin": "./bin/fixtsconfig",
   "bugs": {
-    "url": "https://github.com/henrikjoreteg/fixpack/issues"
+    "url": "https://github.com/kyo-ago/fixtsconfig/issues"
   },
   "dependencies": {
     "alce": "1.0.0",
@@ -16,19 +16,22 @@
   "devDependencies": {
     "standard": "^3.2.1"
   },
-  "homepage": "https://github.com/henrikjoreteg/fixpack",
+  "homepage": "https://github.com/kyo-ago/fixtsconfig",
   "keywords": [
     "cleanup",
+    "typescript",
+    "tsconfig",
+    "fixpack",
     "package"
   ],
   "license": "MIT",
-  "main": "fixpack.js",
+  "main": "fixtsconfig.js",
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/henrikjoreteg/fixpack"
+    "url": "git://github.com/kyo-ago/fixtsconfig"
   },
   "scripts": {
-    "test": "standard && standard bin/fixpack"
+    "test": "standard && standard bin/fixtsconfig"
   }
 }
