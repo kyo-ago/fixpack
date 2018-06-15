@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 var ALCE = require('alce')
-var extend = require('extend-object')
 var fs = require('fs')
 var path = require('path')
 require('colors')
@@ -30,7 +29,7 @@ function sortAlphabetically (object) {
 }
 
 module.exports = function (file, config) {
-  config = extend(defaultConfig, config || {})
+  config = Object.assign(defaultConfig, config || {})
   if (!fs.existsSync(file)) {
     if (!config.quiet) console.log(('No such file: ' + file).red)
     process.exit(1)
